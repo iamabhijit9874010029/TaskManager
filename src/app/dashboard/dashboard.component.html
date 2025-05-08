@@ -1,1 +1,344 @@
-<p>dashboard works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page" routerLink="dashboard">Dashboard</li>
+    </ol>
+</nav>
+
+<h5>Dashboard</h5>
+<div class="row">
+    <div class="col-3 pb-3 text-primary-emphasis bg-primary-subtle text-center">
+        <!-- <div class="row"> -->
+        <div class="col-12 text-center pt-2 pb-2 fw-bold bg-dark text-white rounded">{{Designation}}</div>
+        <!-- </div> -->
+        <div class="col-12 text-center mt-2">
+            <img src="assets/images/profile.jpg" width="120px" alt="profile" class="rounded-circle">
+        </div>
+        <div class="col-12 text-center mt-2 fw-bold pt-2 pb-2">
+            {{Username}}
+        </div>
+        <div class="col-12 text-center mt-2 fw-bold pt-2 pb-2">
+            TEAM SUMMARY
+        </div>
+        <div class="col-12 mb-3">
+            <ul class="list-group">
+                <li class="list-group-item bg-white d-flex justify-content-between align-items-center">
+                    NO. OF TEAM MEMBERS
+                    <span class="badge bg-secondary badge-pill">{{NoOfTeamMembers}}</span>
+                </li>
+                <li class="list-group-item bg-white d-flex justify-content-between align-items-center">
+                    TOTAL COST OF ALL PROJECTS
+                    <span class="badge bg-secondary badge-pill">$ {{TotalCostOfAllProjects}}k</span>
+                </li>
+                <li class="list-group-item bg-white d-flex justify-content-between align-items-center">
+                    PENDING TASKS
+                    <span class="badge bg-secondary badge-pill">{{PendingTasks}}</span>
+                </li>
+                <li class="list-group-item bg-white d-flex justify-content-between align-items-center">
+                    UPCOMING PROJECTS
+                    <span class="badge bg-secondary badge-pill">{{UpComingProjects}}</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-12 text-center mt-2 fw-bold pt-2 pb-2">
+            CLIENTS
+        </div>
+        <div class="col-12 mb-3">
+            <ul class="list-group">
+                <li class="list-group-item bg-white d-flex justify-content-between align-items-center">
+                    ABC Infotech Pvt Ltd.
+                </li>
+                <li class="list-group-item bg-white d-flex justify-content-between align-items-center">
+                    Def Solutions Inc.
+                </li>
+                <li class="list-group-item bg-white d-flex justify-content-between align-items-center">
+                    Ghi Industries
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-6 bg-primary-subtle">
+        <div class="row">
+            <div class="col-12 pt-0 pb-2 text-white text-primary-emphasis bg-primary-subtle">
+
+                <div class="row mt-2">
+                    <div class="col-6 text-start">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle bg-dark" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Project A
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Project A</a></li>
+                                <li><a class="dropdown-item" href="#">Project B</a></li>
+                                <li><a class="dropdown-item" href="#">Project C</a></li>
+                                <li><a class="dropdown-item" href="#">Project D</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-6 text-end">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle bg-dark" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                2025
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">2025</a></li>
+                                <li><a class="dropdown-item" href="#">2024</a></li>
+                                <li><a class="dropdown-item" href="#">2023</a></li>
+                                <li><a class="dropdown-item" href="#">2022</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mx-auto text-white bg-secondary px-3 py-2">
+            PROJECT BRIEFING
+        </div>
+        <div class="col-12">
+            <table class="table table-borderless bg-white">
+                <tbody class="table-group-divider">
+                    <tr>
+                        <td>Project Cost</td>
+                        <td>${{ProjectCost}}</td>
+                    </tr>
+                    <tr>
+                        <td>Current Expenditure</td>
+                        <td>${{CurrentExpenditure}}</td>
+                    </tr>
+                    <tr>
+                        <td>Available Funds</td>
+                        <td>${{AvailableFunds}}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col-12 mx-auto text-white bg-secondary px-3 py-2">
+            TEAM MEMBERS SUMMARY
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Region</th>
+                    <th scope="col">Team Members Count</th>
+                    <th scope="col">Temporarily Unavailable Members</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <th scope="row">East</th>
+                    <td>20</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <th scope="row">South</th>
+                    <td>20</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <th scope="row">West</th>
+                    <td>20</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <th scope="row">North</th>
+                    <td>20</td>
+                    <td>4</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-3 bg-primary-subtle">
+        <div class="row">
+            <div class="col-12 my-2 text-white bg-dark px-3 py-2">
+                TEAM MEMBERS
+            </div>
+            <div class="col-lg-12">
+                <div class="accordion accordion-flush" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button bg-secondary text-white" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                aria-controls="collapseOne">
+                                East
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Ford</td>
+                                            <td><i class="fa-solid fa-phone me-1"></i>Available</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Miller</td>
+                                            <td><i class="fa-solid fa-phone me-1"></i>Available</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Jones</td>
+                                            <td><i class="fa-solid fa-user-xmark me-1"></i>Busy</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">4</th>
+                                            <td>James</td>
+                                            <td><i class="fa-solid fa-user-xmark me-1"></i>Busy</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button bg-secondary text-white collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                aria-controls="collapseTwo">
+                                South
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Ford</td>
+                                            <td><i class="fa-solid fa-phone me-1"></i>Available</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Miller</td>
+                                            <td><i class="fa-solid fa-phone me-1"></i>Available</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Jones</td>
+                                            <td><i class="fa-solid fa-user-xmark me-1"></i>Busy</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">4</th>
+                                            <td>James</td>
+                                            <td><i class="fa-solid fa-user-xmark me-1"></i>Busy</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button bg-secondary text-white collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                aria-controls="collapseThree">
+                                West
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Ford</td>
+                                            <td><i class="fa-solid fa-phone me-1"></i>Available</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Miller</td>
+                                            <td><i class="fa-solid fa-phone me-1"></i>Available</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Jones</td>
+                                            <td><i class="fa-solid fa-user-xmark me-1"></i>Busy</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">4</th>
+                                            <td>James</td>
+                                            <td><i class="fa-solid fa-user-xmark me-1"></i>Busy</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button bg-secondary text-white collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                aria-controls="collapseFour">
+                                North
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Ford</td>
+                                            <td><i class="fa-solid fa-phone me-1"></i>Available</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Miller</td>
+                                            <td><i class="fa-solid fa-phone me-1"></i>Available</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Jones</td>
+                                            <td><i class="fa-solid fa-user-xmark me-1"></i>Busy</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">4</th>
+                                            <td>James</td>
+                                            <td><i class="fa-solid fa-user-xmark me-1"></i>Busy</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

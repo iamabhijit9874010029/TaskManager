@@ -66,7 +66,8 @@
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li><a *ngFor="let projects of Projects" class="dropdown-item" href="#" onClick="return false" (click)="onProjectChanges($event)">{{projects}}</a>
+                                <li><a *ngFor="let projects of Projects" class="dropdown-item" href="#"
+                                        onClick="return false" (click)="onProjectChanges($event)">{{projects}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -139,7 +140,7 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button bg-secondary text-white" type="button"
                                 data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i"
-                                [attr.aria-expanded]="i === 0 ? 'true' : 'false'" [attr.aria-controls]="'collapse'+i">
+                                [attr.aria-expanded]="(i === 0 ? true : false)" [attr.aria-controls]="'collapse'+i">
                                 {{teamMember.Region}}
                             </button>
                         </h2>
@@ -150,8 +151,8 @@
                         <!-- [ngClass]="condition ? 'a' : 'b'"	✅ Yes	You want either class a or b -->
                         <!-- [ngClass]="i === 0 ? 'collapse show' : 'collapse'" -->
 
-                        <div [attr.id]="'collapse'+i" class="accordion-collapse"
-                            [ngClass]="i === 0 ? 'collapse show' : 'collapse'" data-bs-parent="#accordionExample">
+                        <div [attr.id]="'collapse'+i" class="accordion-collapse collapse"
+                            [ngClass]="(i === 0 ? 'show': '')" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <table class="table">
                                     <thead>
@@ -164,7 +165,8 @@
                                     <tbody>
                                         <tr *ngFor="let member of teamMember.Members">
                                             <th scope="row">{{member.ID}}</th>
-                                            <td>{{member.Name}}</td>
+                                            <td [style.color]="(member.Status === 'Busy'? 'red':'black')">{{member.Name}}
+                                            </td>
                                             <td>{{member.Status}}</td>
                                         </tr>
                                     </tbody>

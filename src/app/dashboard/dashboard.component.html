@@ -165,7 +165,8 @@
                                     <tbody>
                                         <tr *ngFor="let member of teamMember.Members">
                                             <th scope="row">{{member.ID}}</th>
-                                            <td [style.color]="(member.Status === 'Busy'? 'red':'black')">{{member.Name}}
+                                            <td [style.color]="(member.Status === 'Busy'? 'red':'black')">
+                                                {{member.Name}}
                                             </td>
                                             <td>{{member.Status}}</td>
                                         </tr>

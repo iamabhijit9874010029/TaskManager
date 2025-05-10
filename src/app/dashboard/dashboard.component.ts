@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
 
     this.Projects = ["Project A", "Project B", "Project C", "Project D"];
 
-    for (let i = 2010; i <= 2025; i++) {
+    for (let i = 2025; i >= 2020; i--) {
       this.Years.push(i);
     }
 

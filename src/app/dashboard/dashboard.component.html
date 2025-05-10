@@ -80,7 +80,14 @@
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li><a *ngFor="let years of Years" class="dropdown-item" href="#">{{years}}</a></li>
+                                <li *ngFor="let year of Years" [ngSwitch]="year">
+                                    <a class="dropdown-item" href="#" *ngSwitchCase="2025"
+                                        style="color: green;">{{year}}</a>
+                                    <a class="dropdown-item" href="#" *ngSwitchCase="2024"
+                                        style="color: red;">{{year}}</a>
+                                    <a class="dropdown-item" href="#" *ngSwitchDefault
+                                        style="color: black;">{{year}}</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

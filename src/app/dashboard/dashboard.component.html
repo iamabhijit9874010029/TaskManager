@@ -66,7 +66,7 @@
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li><a *ngFor="let projects of Projects" class="dropdown-item" href="#">{{projects}}</a>
+                                <li><a *ngFor="let projects of Projects" class="dropdown-item" href="#" onClick="return false" (click)="onProjectChanges($event)">{{projects}}</a>
                                 </li>
                             </ul>
                         </div>

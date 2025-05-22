@@ -27,10 +27,6 @@ export class ProjectsComponent implements OnInit {
       (response) => {
         this.projects.push(response);
 
-        // this.newProject.projectID = null;
-        // this.newProject.projectName = null;
-        // this.newProject.teamSize = null;
-        // this.newProject.dateOfStart = null;
         this.newProject = new Project(); // Reset the newProject object
 
       },

@@ -1,13 +1,13 @@
 export class Project {
-    projectID: number;
-    projectName: string | null;
-    dateOfStart: string | null;
-    teamSize: number;
+    projectID?: number | null;
+    projectName?: string | null;
+    dateOfStart?: string | null;
+    teamSize?: number | null;
 
     constructor() {
-        this.projectID = 0;
-        this.projectName = "";
-        this.dateOfStart = null;
-        this.teamSize = 0;
+        // this.projectID = 0;
+        // this.projectName = "";
+        // this.dateOfStart = "";
+        // this.teamSize = 0;
     }
 }

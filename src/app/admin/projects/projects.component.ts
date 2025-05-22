@@ -9,6 +9,8 @@ import { ProjectsService } from 'src/app/projects.service';
 })
 export class ProjectsComponent implements OnInit {
   projects: Project[] = [];
+  newProject: Project = new Project();
+
   constructor(private projectService: ProjectsService) { }
 
   ngOnInit(): void {
@@ -18,5 +20,18 @@ export class ProjectsComponent implements OnInit {
         console.log(this.projects);
       }
     );
+  }
+
+  onSaveClick(): Project {
+    this.projectService.insertProject(this.newProject).subscribe(
+      (response) => {
+        this.projects.push(this.newProject);
+      },
+      (error) => {
+        console.error('Error inserting project:', error);
+      }
+    )
+
+    return this.newProject;
   }
 }

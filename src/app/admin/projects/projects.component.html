@@ -20,8 +20,13 @@
       <!-- <td>{{project.dateOfStart | date}}</td> -->
       <td>{{project.teamSize}}</td>
       <td>
-        <button type="button" class="btn btn-primary" (click)="onEditClick($event, i)" data-bs-toggle="modal"
+        <button type="button" class="btn btn-primary mx-2" (click)="onEditClick($event, i)" data-bs-toggle="modal"
           data-bs-target="#editModal" data-bs-whatever="">Edit Project</button>
+        <!-- Angular only automatically populates the event object in the variable named $event. -->
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary mx-2" (click)="onDeleteClick($event, i)" data-bs-toggle="modal"
+          data-bs-target="#deleteModal" data-bs-whatever="">Delete Project</button>
         <!-- Angular only automatically populates the event object in the variable named $event. -->
       </td>
     </tr>
@@ -30,7 +35,7 @@
 
 
 
-
+<!-- create -->
 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -70,6 +75,7 @@
   </div>
 </div>
 
+<!-- edit -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -104,6 +110,38 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary" (click)="onUpdateClick()" data-bs-dismiss="modal">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteModalLabel">Project Deletion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Project ID:</label>
+            <input type="number" class="form-control" id="recipient-name" [(ngModel)]="deleteProject.projectID"
+              name="projectID" disabled="disabled">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Project Name:</label>
+            <input type="text" class="form-control" id="recipient-name" [(ngModel)]="deleteProject.projectName"
+              name="projectName" disabled="disabled">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="onDeleteConfrimClick()"
+          data-bs-dismiss="modal">Delete</button>
       </div>
     </div>
   </div>

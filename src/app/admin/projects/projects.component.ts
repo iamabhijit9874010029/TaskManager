@@ -12,6 +12,8 @@ export class ProjectsComponent implements OnInit {
   newProject: Project = new Project();
   editProject: Project = new Project();
   editIndex: number = -1;
+  deleteProject: Project = new Project();
+  deleteIndex: number = -1;
 
   constructor(private projectService: ProjectsService) { }
 
@@ -98,4 +100,27 @@ export class ProjectsComponent implements OnInit {
   //     }
   //   })
   // }
+
+  onDeleteClick(event: MouseEvent, index: number) {
+    this.deleteProject.projectID = this.projects[index].projectID;
+    this.deleteProject.projectName = this.projects[index].projectName;
+    this.deleteProject.dateOfStart = this.projects[index].dateOfStart;
+    this.deleteProject.teamSize = this.projects[index].teamSize;
+    this.deleteIndex = index;
+  }
+
+  onDeleteConfrimClick() {
+    this.projectService.deleteProject(this.deleteProject.projectID!).subscribe((response) => {
+      this.projects.splice(this.deleteIndex, 1);
+
+      this.deleteProject.projectID = null;
+      this.deleteProject.projectName = null;
+      this.deleteProject.dateOfStart = null;
+      this.deleteProject.teamSize = null;
+    },
+      (error) => {
+        console.error('Error deleting project:', error);
+      }
+    )
+  }
 }

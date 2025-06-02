@@ -10,6 +10,8 @@ import { ProjectsService } from 'src/app/projects.service';
 export class ProjectsComponent implements OnInit {
   projects: Project[] = [];
   newProject: Project = new Project();
+  editProject: Project = new Project();
+  editIndex: number = -1;
 
   constructor(private projectService: ProjectsService) { }
 
@@ -25,9 +27,17 @@ export class ProjectsComponent implements OnInit {
   onSaveClick(): Project {
     this.projectService.insertProject(this.newProject).subscribe(
       (response) => {
-        this.projects.push(response);
+        let p: Project = new Project();
+        p.projectID = response.projectID;
+        p.projectName = response.projectName;
+        p.dateOfStart = response.dateOfStart;
+        p.teamSize = response.teamSize;
+        this.projects.push(p);
 
-        this.newProject = new Project(); // Reset the newProject object
+        this.newProject.projectID = null;
+        this.newProject.projectName = null;
+        this.newProject.dateOfStart = null;
+        this.newProject.teamSize = null;
 
       },
       (error) => {
@@ -36,5 +46,31 @@ export class ProjectsComponent implements OnInit {
     )
 
     return this.newProject;
+  }
+
+  onEditClick(event: MouseEvent, index: number) {
+    this.editProject.projectID = this.projects[index].projectID;
+    this.editProject.projectName = this.projects[index].projectName;
+    this.editProject.dateOfStart = this.projects[index].dateOfStart;
+    this.editProject.teamSize = this.projects[index].teamSize;
+    this.editIndex = index;
+  }
+
+  onUpdateClick() {
+    this.projectService.updateProject(this.editProject).subscribe((response) => {
+      let p: Project = new Project();
+      p.projectID = response.projectID;
+      p.projectName = response.projectName;
+      p.dateOfStart = response.dateOfStart;
+      p.teamSize = response.teamSize;
+      this.projects[this.editIndex] = p;
+
+      this.newProject.projectID = null;
+      this.newProject.projectName = null;
+      this.newProject.dateOfStart = null;
+      this.newProject.teamSize = null;
+    }, (error) => {
+      console.error('Error updating project:', error);
+    });
   }
 }

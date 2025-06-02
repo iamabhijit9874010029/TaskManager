@@ -73,4 +73,29 @@ export class ProjectsComponent implements OnInit {
       console.error('Error updating project:', error);
     });
   }
+
+  //the new way after Rxjs 7.5+
+  // onUpdateClick() {
+  //   this.projectService.updateProject(this.editProject).subscribe({
+  //     next: (value) => {
+  //       let p: Project = new Project();
+  //       p.projectID = value.projectID;
+  //       p.projectName = value.projectName;
+  //       p.dateOfStart = value.dateOfStart;
+  //       p.teamSize = value.teamSize;
+  //       this.projects[this.editIndex] = p;
+
+  //       this.newProject.projectID = null;
+  //       this.newProject.projectName = null;
+  //       this.newProject.dateOfStart = null;
+  //       this.newProject.teamSize = null;
+  //     },
+  //     error: (error) => {
+  //       console.error('Error updating project:', error);
+  //     },
+  //     complete: () => {
+  //       this.editIndex = -1; // Reset edit index after update
+  //     }
+  //   })
+  // }
 }

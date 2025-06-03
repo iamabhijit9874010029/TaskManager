@@ -2,6 +2,45 @@
   data-bs-whatever="">Create Project</button>
 
 <h1>Projects</h1>
+<!-- search -->
+<!-- <form class="row my-3 mx-3" role="search">
+  <div class="dropdown my-3 col-6">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Search By
+    </button>
+    <ul class="dropdown-menu" name="searchBy" [(ngModel)]="searchBy">
+      <li><a class="dropdown-item" value="ProjectID">Project ID</a></li>
+      <li><a class="dropdown-item" value="ProjectName">Project name</a></li>
+      <li><a class="dropdown-item" value="DateOfStart">Date of Start</a></li>
+      <li><a class="dropdown-item" value="TeamSize">Team size</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <input class="me-2 col-3" type="search" placeholder="Search" aria-label="Search" name="searchText"
+      [(ngModel)]="searchText" />
+    <button class="btn btn-outline-success col-3" type="submit" (click)="onSearchCLick()">Search</button>
+  </div>
+</form> -->
+
+<form class="row my-3 mx-3" role="search">
+  <div class="my-3 col-6">
+    <label for="searchBy" class="form-label">Search By</label>
+    <select class="form-select" id="searchBy" name="searchBy" [(ngModel)]="searchBy">
+      <option value="ProjectID">Project ID</option>
+      <option value="ProjectName">Project name</option>
+      <option value="DateOfStart">Date of Start</option>
+      <option value="TeamSize">Team size</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <input class="me-2 col-3" type="search" placeholder="Search" aria-label="Search" name="searchText"
+      [(ngModel)]="searchText" />
+    <button class="btn btn-outline-success col-3" type="submit" (click)="onSearchCLick()">Search</button>
+  </div>
+</form>
+
+
 <table class="table">
   <thead>
     <tr>

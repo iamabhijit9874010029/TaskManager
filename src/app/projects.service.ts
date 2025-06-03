@@ -24,7 +24,11 @@ export class ProjectsService {
   }
 
   deleteProject(projectID: number): Observable<number> {
-    // return this.httpClient.delete<number>(`https://localhost:7062/api/projects/${projectID}`); //api should be this way => /api/projects/{projectID}
-    return this.httpClient.delete<number>('https://localhost:7062/api/projects?ProjectID=' + projectID); // Alternative way if the API expects query parameters
+    // return this.httpClient.delete<number>(`https://localhost:7062/api/projects/${projectID}`); //ProjectID as route parameter (path segment) in backend API
+    return this.httpClient.delete<number>('https://localhost:7062/api/projects?ProjectID=' + projectID); //ProjectID as a query parameter in backend API
+  }
+
+  searchProjects(searchBy: string, searchText: string): Observable<Project[]> {
+    return this.httpClient.get<Project[]>(`https://localhost:7062/api/projects/${searchBy}/${searchText}`, { responseType: 'json' });
   }
 }

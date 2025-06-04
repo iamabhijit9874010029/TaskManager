@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Project } from './project';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,14 @@ export class ProjectsService {
 
   getAllProjects(): Observable<Project[]> {
     // return this.httpClient.get<Project[]>('/api/projects'); //with proxy forwarding (need to create proxy.conf.json and add to angular.json, package.json)
-    return this.httpClient.get<Project[]>('https://localhost:7062/api/projects', { responseType: 'json' }); //with cross-origin
+    return this.httpClient.get<Project[]>('https://localhost:7062/api/projects', { responseType: 'json' }).pipe(
+      map((data: Project[]) => {
+        for (let i = 0; i < data.length; i++) {
+          data[i].teamSize = Math.round(data[i].teamSize! * 100);
+        }
+        return data;
+      })
+    ); //with cross-origin
   }
 
   insertProject(newProject: Project): Observable<Project> {

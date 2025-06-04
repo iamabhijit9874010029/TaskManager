@@ -43,7 +43,8 @@ export class ProjectsService {
   deleteProject(projectID: number): Observable<number> {
     // return this.httpClient.delete<number>(`https://localhost:7062/api/projects/${projectID}`); //ProjectID as route parameter (path segment) in backend API
     // return this.httpClient.delete<number>('https://localhost:7062/api/projects?ProjectID=' + projectID); //ProjectID as a query parameter in backend API
-    return this.httpClient.delete<number>('http://localhost:3000/projects?ProjectID=' + projectID);//for json-server  //ProjectID as a query parameter in backend API
+    return this.httpClient.delete<number>('http://localhost:3000/projects?ProjectID=' + projectID);//for json-server (this will not work with json-server, as it does not support dynamic routes like this)
+    // Instead, you can filter the projects on the client side after fetching all projects
   }
 
   searchProjects(searchBy: string, searchText: string): Observable<Project[]> {

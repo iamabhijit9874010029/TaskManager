@@ -1,0 +1,22 @@
+{
+    "projects": [
+        {
+            "projectID": 1,
+            "projectName": "Project Alpha",
+            "dateOfStart": "2023-01-15",
+            "teamSize": 5
+        },
+        {
+            "projectID": 2,
+            "projectName": "Project Beta",
+            "dateOfStart": "2023-02-20",
+            "teamSize": 8
+        },
+        {
+            "projectID": 3,
+            "projectName": "Project Gamma",
+            "dateOfStart": "2023-03-10",
+            "teamSize": 3
+        }
+    ]
+}

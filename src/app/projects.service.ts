@@ -33,18 +33,22 @@ export class ProjectsService {
 
   insertProject(newProject: Project): Observable<Project> {
     // return this.httpClient.post<Project>('https://localhost:7062/api/projects', newProject, { responseType: 'json' });
+    newProject.id = String(newProject.projectID)//for json-server 
     return this.httpClient.post<Project>('http://localhost:3000/projects', newProject, { responseType: 'json' });//for json-server 
   }
 
   updateProject(existingProject: Project): Observable<Project> {
-    return this.httpClient.put<Project>('http://localhost:3000/projects', existingProject, { responseType: 'json' });//for json-server 
+    // return this.httpClient.put<Project>('https://localhost:7062/api/projects', existingProject, { responseType: 'json' });
+    existingProject.id = String(existingProject.projectID);//for json-server 
+    return this.httpClient.put<Project>(`http://localhost:3000/projects/${existingProject.projectID}`, existingProject, { responseType: 'json' });//for json-server 
   }
 
   deleteProject(projectID: number): Observable<number> {
     // return this.httpClient.delete<number>(`https://localhost:7062/api/projects/${projectID}`); //ProjectID as route parameter (path segment) in backend API
     // return this.httpClient.delete<number>('https://localhost:7062/api/projects?ProjectID=' + projectID); //ProjectID as a query parameter in backend API
-    return this.httpClient.delete<number>('http://localhost:3000/projects?ProjectID=' + projectID);//for json-server (this will not work with json-server, as it does not support dynamic routes like this)
+    // return this.httpClient.delete<number>('http://localhost:3000/projects?ProjectID=' + projectID);//for json-server (this will not work with json-server, as it does not support dynamic routes like this)
     // Instead, you can filter the projects on the client side after fetching all projects
+    return this.httpClient.delete<number>(`http://localhost:3000/projects/${projectID}`);//for json-server, keep in mind that "id" in json-server should be equal to "projectID" in your Project model
   }
 
   searchProjects(searchBy: string, searchText: string): Observable<Project[]> {

@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-4 mx-auto my-5">
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputUsername1" class="form-label">Username</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="UsernameHelp"
+                    name="Username" [(ngModel)]="loginViewModel.Username">
+                <!-- <div id="UsernameHelp" class="form-text">We'll never share your Username with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="Password"
+                    [(ngModel)]="loginViewModel.Password">
+            </div>
+            <div class="my-3">
+                <span class="text-danger">{{loginError}}</span>
+                <button type="submit" class="btn btn-primary" (click)="onLoginClick()">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

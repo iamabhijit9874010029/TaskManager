@@ -11,15 +11,15 @@ export class ProjectsService {
   constructor(private httpClient: HttpClient) { }
 
   getAllProjects(): Observable<Project[]> {
-    return this.httpClient.get<Project[]>('/api/projects'); //with proxy forwarding (need to create proxy.conf.json and add to angular.json, package.json)
-    // return this.httpClient.get<Project[]>('https://localhost:7062/api/projects', { responseType: 'json' }).pipe(
-    //   map((data: Project[]) => {
-    //     for (let i = 0; i < data.length; i++) {
-    //       data[i].teamSize = Math.round(data[i].teamSize! * 100);
-    //     }
-    //     return data;
-    //   })
-    // ); //with cross-origin
+    // return this.httpClient.get<Project[]>('/api/projects'); //with proxy forwarding (need to create proxy.conf.json and add to angular.json, package.json)
+    return this.httpClient.get<Project[]>('https://localhost:7062/api/projects', { responseType: 'json' }).pipe(
+      map((data: Project[]) => {
+        for (let i = 0; i < data.length; i++) {
+          data[i].teamSize = Math.round(data[i].teamSize! * 100);
+        }
+        return data;
+      })
+    ); //with cross-origin
 
     // return this.httpClient.get<Project[]>('http://localhost:3000/projects', { responseType: 'json' }).pipe(
     //   map((data: Project[]) => {

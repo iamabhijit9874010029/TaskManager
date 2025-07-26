@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Project } from './project';
 import { map, Observable } from 'rxjs';
 
@@ -10,9 +10,27 @@ export class ProjectsService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //with HttpHeaders
+  // token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkNmNkZWQxNi02ZTAzLTQwZjAtODIxZS1hZTcxYmI2ZWI4MmUiLCJ1bmlxdWVfbmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc1MzUzNzM5OSwiZXhwIjoxNzUzNTY2MTk5LCJpYXQiOjE3NTM1MzczOTl9.HOSOG6WQcI8FMCh4HgNsmzJEvngPpRMi_i9bdUAYKls`;
+
+  // getAllProjects(): Observable<Project[]> {
+  //   // return this.httpClient.get<Project[]>('/api/projects'); //with proxy forwarding (need to create proxy.conf.json and add to angular.json, package.json)
+  //   return this.httpClient.get<Project[]>('https://localhost:7062/api/projects', {headers: new HttpHeaders({'Authorization':`Bearer ${this.token}`}) ,responseType: 'json'}).pipe(
+  //     map((data: Project[]) => {
+  //       for (let i = 0; i < data.length; i++) {
+  //         data[i].teamSize = Math.round(data[i].teamSize! * 100);
+  //       }
+  //       return data;
+  //     })
+  //   ); //with cross-origin
+
+
+  // plain object with string key-value pairs (without HttpHeaders)
+  token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJkNmNkZWQxNi02ZTAzLTQwZjAtODIxZS1hZTcxYmI2ZWI4MmUiLCJ1bmlxdWVfbmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc1MzUzNzM5OSwiZXhwIjoxNzUzNTY2MTk5LCJpYXQiOjE3NTM1MzczOTl9.HOSOG6WQcI8FMCh4HgNsmzJEvngPpRMi_i9bdUAYKls`;
+
   getAllProjects(): Observable<Project[]> {
     // return this.httpClient.get<Project[]>('/api/projects'); //with proxy forwarding (need to create proxy.conf.json and add to angular.json, package.json)
-    return this.httpClient.get<Project[]>('https://localhost:7062/api/projects', { responseType: 'json' }).pipe(
+    return this.httpClient.get<Project[]>('https://localhost:7062/api/projects', {headers: {'Authorization':`Bearer ${this.token}`} ,responseType: 'json'}).pipe(
       map((data: Project[]) => {
         for (let i = 0; i < data.length; i++) {
           data[i].teamSize = Math.round(data[i].teamSize! * 100);

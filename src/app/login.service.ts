@@ -13,20 +13,7 @@ export class LoginService {
   currentUserName: string | null = null;
 
   public Login(loginViewModel: LoginViewModel) {
-    // return this.httpClient.post<any>('https://localhost:7062/api/account/authenticate', loginViewModel, { responseType: 'json' }).pipe(
-    //   map(user => {
-    //     if (user) {
-    //       this.currentUserName = user.userName;
-    //       // localStorage.setItem('currentUser', JSON.stringify(user));
-    //       console.log("User logged in: " + this.currentUserName);
-    //     }
-    //     return user;
-    //   })
-    // );
-
-
-
-    return this.httpClient.post<any>('/api/account/authenticate', loginViewModel, { responseType: 'json' }).pipe(
+    return this.httpClient.post<any>('https://localhost:7062/api/account/authenticate', loginViewModel, { responseType: 'json' }).pipe(
       map(user => {
         if (user) {
           this.currentUserName = user.userName;
@@ -36,6 +23,19 @@ export class LoginService {
         return user;
       })
     );
+
+
+
+    // return this.httpClient.post<any>('/api/account/authenticate', loginViewModel, { responseType: 'json' }).pipe(
+    //   map(user => {
+    //     if (user) {
+    //       this.currentUserName = user.userName;
+    //       // localStorage.setItem('currentUser', JSON.stringify(user));
+    //       console.log("User logged in: " + this.currentUserName);
+    //     }
+    //     return user;
+    //   })
+    // );
   }
 
   public Logout() {

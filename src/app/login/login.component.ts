@@ -16,6 +16,7 @@ export class LoginComponent {
 
   onLoginClick() {
     this.loginService.Login(this.loginViewModel).subscribe((response) => {
+      console.log('Login successful:', response);
       this.router.navigate(['/dashboard']),
         (error: Error) => {
           console.error('Login failed:', error);

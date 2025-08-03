@@ -24,6 +24,10 @@ export class ProjectsComponent implements OnInit {
       (response: Project[]) => {
         this.projects = response;
         console.log(this.projects);
+      },
+      (error) => {
+        console.error('Error fetching projects:', error);
+        alert('Authentication failed!');
       }
     );
   }

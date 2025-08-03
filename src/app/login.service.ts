@@ -18,6 +18,8 @@ export class LoginService {
         if (user) {
           this.currentUserName = user.userName;
           // localStorage.setItem('currentUser', JSON.stringify(user));
+          // localStorage.setItem('currentUser', JSON.stringify(user));
+          sessionStorage['currentUser'] = JSON.stringify(user);
           console.log("User logged in: " + this.currentUserName);
         }
         return user;
@@ -41,6 +43,7 @@ export class LoginService {
   public Logout() {
     this.currentUserName = null;
     // localStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentUser');
     this.router.navigate(['/login']);
   }
 }

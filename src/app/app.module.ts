@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
+import { JwtUnAuthorizedInterceptorInterceptor } from './jwt-un-authorized-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,11 @@ import { JwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtUnAuthorizedInterceptorInterceptor,
       multi: true
     }
   ],

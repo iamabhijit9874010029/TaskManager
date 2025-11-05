@@ -26,8 +26,8 @@ export class ProjectsComponent implements OnInit {
         console.log(this.projects);
       },
       (error) => {
-        console.error('Error fetching projects:', error);
-        alert('Authentication failed!');
+        // console.error('Error fetching projects:', error);
+        // alert('Authentication failed!');
       }
     );
   }
@@ -49,7 +49,7 @@ export class ProjectsComponent implements OnInit {
 
       },
       (error) => {
-        console.error('Error inserting project:', error);
+        // console.error('Error inserting project:', error);
       }
     )
 
@@ -78,7 +78,7 @@ export class ProjectsComponent implements OnInit {
       this.newProject.dateOfStart = null;
       this.newProject.teamSize = null;
     }, (error) => {
-      console.error('Error updating project:', error);
+      // console.error('Error updating project:', error);
     });
   }
 
@@ -125,7 +125,7 @@ export class ProjectsComponent implements OnInit {
       this.deleteProject.teamSize = null;
     },
       (error) => {
-        console.error('Error deleting project:', error);
+        // console.error('Error deleting project:', error);
       }
     )
   }
@@ -134,7 +134,7 @@ export class ProjectsComponent implements OnInit {
     this.projectService.searchProjects(this.searchBy, this.searchText).subscribe((response) => {
       this.projects = response;
     }, (error) => {
-      console.error('Error searching projects:', error);
+      // console.error('Error searching projects:', error);
     })
   }
 }

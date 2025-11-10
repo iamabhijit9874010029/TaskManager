@@ -3,6 +3,7 @@ import { LoginViewModel } from './login-view-model';
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginService {
 
   private httpClient!: HttpClient;
-  constructor(private httpBackend: HttpBackend, private router: Router) { }
+  constructor(private httpBackend: HttpBackend, private router: Router, private jwtHelperService: JwtHelperService) { }
   currentUserName: string | null = null;
 
   public Login(loginViewModel: LoginViewModel) {
@@ -28,8 +29,6 @@ export class LoginService {
       })
     );
 
-
-
     // return this.httpClient.post<any>('/api/account/authenticate', loginViewModel, { responseType: 'json' }).pipe(
     //   map(user => {
     //     if (user) {
@@ -46,6 +45,18 @@ export class LoginService {
     this.currentUserName = null;
     // localStorage.removeItem('currentUser');
     sessionStorage.removeItem('currentUser');
+    this.currentUserName = null;
     this.router.navigate(['/login']);
+  }
+
+  public isAuthenticated(): boolean {
+    var token = sessionStorage.getItem("currentUser") ? JSON.parse(sessionStorage.getItem("currentUser")!).token : null;
+
+    if (this.jwtHelperService.isTokenExpired(token)) {
+      return false;
+    }
+    else {
+      return true;
+    }
   }
 }
